@@ -1,19 +1,17 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './pages/home';
-import HomeDetail from './pages/home/detail';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/home/Dashboard';
 
-function App() {
 
+export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<Home />}>
-        </Route>
-        <Route path="/home/" element={<HomeDetail />} />
+        <Route path="/" element={<Dashboard />} />
+        {/* <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} /> */}
       </Routes>
-    </BrowserRouter>
-  )
+    </Router>
+  );
 }
-
-export default App
