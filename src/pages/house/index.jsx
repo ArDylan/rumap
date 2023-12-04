@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ReactPaginate from "react-paginate";
 import PropTypes from 'prop-types';
-import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
+import { IoIosArrowDropleftCircle, IoIosSearch, IoIosArrowDroprightCircle } from "react-icons/io";
 import { houses } from '../../data/house';
 
 import Navbar from "../../components/Navbar";
@@ -28,6 +28,8 @@ function SamplePrevArrow(props) {
 }
 
 const House = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [currentItems, setCurrentItems] = useState([]);
 
   const logos = ["Beach", "Village", "Downtown", "Suburban", "TinyHouses", "Roadside", "Residential", "Historis", "Ekspatriat", "Mountainous"];
 
@@ -51,12 +53,46 @@ const House = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = houses.slice(indexOfFirstItem, indexOfLastItem);
 
+  useEffect(() => {
+    console.log(searchValue);
+    if (searchValue === "") {
+      // If searchValue is empty, show all items
+      setCurrentItems(houses.slice(indexOfFirstItem, indexOfLastItem));
+    } else {
+      // If searchValue is not empty, filter items based on the searchValue
+      const searchedHouse = houses.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()));
+      const newItems = searchedHouse.slice(indexOfFirstItem, indexOfLastItem);
+      setCurrentItems(newItems);
+    }
+  }, [searchValue, indexOfFirstItem, indexOfLastItem]);
+
+
+
+
+  // useEffect(() => {
+  //   console.log(searchValue);
+  //   const searchedHouse = houses.filter(item => item.title == searchValue);
+  //   currentItems = searchedHouse.slice(indexOfFirstItem, indexOfLastItem);
+  // }, [searchValue])
 
   return (
     <>
       <Navbar />
+      <section className="bg-cover w-full flex flex-cols bg-center py-32" style={{ backgroundImage: "url('src/assets/bgdash.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+        <div className="mx-auto w-6/12 relative">
+          <span className="absolute inset-y-0 -right-0 px-3 rounded-r flex items-center bg-gray-300">
+            <IoIosSearch className="text-xl" />
+          </span>
+          <input
+            className="w-full py-2 rounded-lg px-2"
+            placeholder="Cari Rumah Impianmu"
+            type="text"
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+        </div>
+      </section>
+
       <section className="py-5 mt-5 bg-white w-11/12 mx-auto" style={{ paddingTop: "3px", paddingBottom: "3px" }}>
         <div className="">
           <Slider {...settings}>

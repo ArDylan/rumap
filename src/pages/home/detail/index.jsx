@@ -4,6 +4,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import InputComponent from './components/inputComponent';
 import ListFacility from './components/ListFacility';
@@ -105,14 +106,17 @@ const HomeDetail = () => {
           </ul>
           <div>
             <ul className="inline-flex gap-10">
-              <li className="text-blue-900">Share</li>
-              <li className="text-blue-900">Favorite</li>
+              <li className="text-blue-900 hover:text-blue-500">
+                <Link to={'https://wa.me/+6281223781777'}>
+                  Share
+                </Link></li>
+              <li className="text-blue-900 hover:text-blue-500">Favorite</li>
             </ul>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row gap-2 py-3">
-          <div className="flex-1">
+          <div className="flex-1 h-full">
             <img className="w-full rounded-lg" src={filteredHouse.image} alt="" />
           </div>
           <div className="flex-1">
@@ -164,7 +168,7 @@ const HomeDetail = () => {
         <h2 className="text-lg font-bold mb-2">Reviews</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-5">
           {filteredHouse.comment && filteredHouse.comment.map((data) => (
-          <CommentComponent key={data.facility} image={data.imageUrl} name={data.name} date={data.date} description={data.description} />
+            <CommentComponent key={data.facility} image={data.imageUrl} name={data.name} date={data.date} description={data.description} />
           ))}
         </div>
 

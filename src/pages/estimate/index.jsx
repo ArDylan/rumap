@@ -17,7 +17,7 @@ const Estimate = () => {
     datasets: [
       {
         label: 'Rp',
-        data: [1, 0],
+        data: [0, 1],
         backgroundColor: [
           'rgba(63, 114, 175, 1)',
           'rgba(146, 169, 197, 1)',
