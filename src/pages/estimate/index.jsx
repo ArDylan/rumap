@@ -32,10 +32,10 @@ const Estimate = () => {
   });
 
   useEffect(() => {
-    setPrice(500000000)
-    setInstalment(20)
-    setDP(20)
-    setIr(11, 29)
+    setPrice()
+    setInstalment()
+    setDP()
+    setIr()
   }, []);
 
   useEffect(() => {
@@ -73,11 +73,12 @@ const Estimate = () => {
   return (
     <>
     <Navbar/>
+    <h2 className="text-2xl font-bold my-5 mx-10">Estimasi KPR</h2>
     <div className="px-10 py-8">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         <InputComponent title={"harga properti"} value={price} onChange={(e) => setPrice(e.target.value)} />
-        <InputComponent title={"Jangka Waktu (Tenor)"} value={instalment} onChange={(e) => setInstalment(e.target.value)} />
-        <InputComponent title={"Jumlah Pinjaman"} value={dp} onChange={(e) => setDP(e.target.value)} />
+        <InputComponent title={"Tenor"} value={instalment} onChange={(e) => setInstalment(e.target.value)} />
+        <InputComponent title={"DP"} value={dp} onChange={(e) => setDP(e.target.value)} />
         <InputComponent title={"Suku Bunga"} value={ir} onChange={(e) => setIr(e.target.value)} />
       </div>
       <div className="w-52 mx-auto">

@@ -5,7 +5,7 @@ const ListFacility = ({icon, title, description}) => {
   return (
     <div className="flex gap-2 pb-5">
       <CiLocationOn icon={icon} className="text-xl my-3" />
-      <div>
+      <div className="flex-1">
         <h2 className="font-semibold">{title}</h2>
         <p>{description}</p>
       </div>
