@@ -5,6 +5,7 @@ import Register from './pages/register/';
 import Estimate from './pages/estimate';
 import House from './pages/house';
 import HomeDetail from './pages/home/detail';
+import PropertyForm from './pages/titip';
 
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/list-house" element={<House />} />
           <Route path="/estimate" element={<Estimate />} />
+          <Route path="/titip" element={<PropertyForm />} />
           {/* <Route path="/homeDetail" element={<HomeDetail />} /> */}
           <Route path="/homeDetail/:id" element={<HomeDetail />} />
           {/* <Route path="/home" element={<Home />} />

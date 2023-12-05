@@ -26,7 +26,7 @@ const navLinks = [
   },
   {
     title: "TITIP JUAL/SEWA",
-    path: "/titip-jual-sewa",
+    path: "/titip",
   },
   {
     title: "JASA",
